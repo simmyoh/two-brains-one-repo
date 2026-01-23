@@ -1,6 +1,6 @@
 from pathlib import Path
 
-TARGET_ISO_UTC = "2026-01-13T02:38:00Z"
+TARGET_ISO_UTC = "2026-02-16T02:36:00Z"
 
 # Resolve repo-relative paths safely
 ROOT = Path(__file__).resolve().parents[1]
