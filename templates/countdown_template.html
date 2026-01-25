@@ -30,21 +30,28 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       padding:18px;
     }
-    .wrap { width:min(820px,100%); }
+    .wrap { width:min(820px,100%);position: relative;z-index: 1; }
     .card {
       border:1px solid var(--border);
-      background:var(--card);
+      background: rgba(53, 1, 90, 0.45);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(10px);
       border-radius:18px;
       padding:18px;
       box-shadow:0 0 40px rgba(255,140,200,0.15),
                  0 14px 40px rgba(0,0,0,0.4);
     }
-    h1 { margin:0 0 10px; font-size:clamp(22px,4vw,36px); text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); text-align: center; }
+    h1 { 
+      margin:0 0 10px; 
+      font-size:clamp(22px,4vw,36px); 
+      text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); 
+      text-align: center; }
     .meta {
       color:var(--muted);
       font-size:13px;
       margin-bottom:14px;
       text-align: center;
+      text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4);
     }
     .big {
       font-variant-numeric:tabular-nums;
@@ -65,9 +72,29 @@
       background:rgba(0,0,0,0.12);
       text-align:center;
     }
-    .pill .n { font-size:30px; font-weight:900; }
-    .pill .t { font-size:18px; color:var(--muted); }
+    .pill .n { font-size:30px; font-weight:900; text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); }
+    .pill .t { font-size:18px; color:var(--muted); text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); }
     .done { color:var(--good); font-weight:800; display:none; margin-top:10px; }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("neon_airplane_sunset.png") center / cover no-repeat;
+      opacity: 0.70;              /* adjust 0.12–0.35 to taste */
+      filter: blur(0px) saturate(1.2) contrast(1.05);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 40%, transparent 0 55%, rgba(0,0,0,0.35) 75%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
     @media (max-width: 480px) {
       .card { padding: 14px; }
@@ -93,7 +120,7 @@
         <div class="pill"><div class="n" id="secs">--</div><div class="t">Seconds</div></div>
       </div>
 
-      <div class="done" id="done">🎉 Countdown complete.</div>
+      <div class="done" id="done">Countdown complete.</div>
     </div>
   </div>
 
