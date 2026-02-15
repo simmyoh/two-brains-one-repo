@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Multiple Countdowns</title>
+  <title>Countdowns</title>
   <style>
     :root {
       --bg:#0b1020;
@@ -31,6 +31,12 @@
       padding:18px;
     }
     .wrap { width:min(1000px,100%); }
+    .top-title {
+        margin:0 0 14px;
+        font-size:clamp(28px,5vw,44px);
+        text-align:center;
+        text-shadow: 0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4);
+    }
     .grid {
       display:grid;
       gap:18px;
@@ -44,7 +50,7 @@
       box-shadow:0 0 40px rgba(255,140,200,0.15),
                  0 14px 40px rgba(0,0,0,0.4);
     }
-    h1 { margin:0 0 10px; font-size:clamp(22px,4vw,32px); text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); text-align: center; }
+    h2 { margin:0 0 10px; font-size:clamp(22px,4vw,32px); text-shadow:0 0 10px rgba(255,160,80,0.6),0 0 20px rgba(255,120,200,0.4); text-align: center; }
     .meta {
       color:var(--muted);
       font-size:13px;
@@ -70,7 +76,8 @@
 
     @media (max-width: 480px) {
       .card { padding: 14px; }
-      h1 { margin-bottom: 6px; font-size: clamp(20px, 6vw, 26px); }
+      .top-title { margin-bottom: 10px;font-size: clamp(24px, 8vw, 32px);}
+      h2 { margin-bottom: 6px; font-size: clamp(20px, 6vw, 26px); }
       .row { gap: 6px; margin-top: 8px; }
       .pill { padding: 8px; }
       .pill .n { font-size: 20px; }
@@ -81,25 +88,26 @@
 
 <body>
   <div class="wrap">
+      <h1 class="top-title">Countdown Until</h1>
     <div class="grid" id="countdownGrid"></div>
   </div>
 
 <script>
   const TARGETS = [
     {
-      title: "Countdown Until Touchdown",
+      title: "Touchdown",
       label: "Flight Arrives",
-      iso: "__TARGET__"
+      iso: "2026-02-16T02:36:00Z"
     },
     {
-      title: "Countdown Until We Kiss Again",
+      title: "We Kiss Again",
       label: "Next Meetup",
-      iso: "__TARGET_2__"
+      iso: "2026-02-16T05:05:00Z"
     },
     {
-      title: "Countdown Until We Fall Asleep Together",
+      title: "We Fall Asleep Together",
       label: "Bed Time",
-      iso: "__TARGET_3__"
+      iso: "2026-02-17T06:00:00Z"
     }
   ];
 
@@ -111,7 +119,7 @@
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <h1>${target.title}</h1>
+      <h2>${target.title}</h2>
       <div class="meta"></div>
       <div class="row">
         <div class="pill"><div class="n days">--</div><div class="t">Days</div></div>
@@ -119,7 +127,7 @@
         <div class="pill"><div class="n mins">--</div><div class="t">Minutes</div></div>
         <div class="pill"><div class="n secs">--</div><div class="t">Seconds</div></div>
       </div>
-      <div class="done">Countdown complete.</div>
+      <div class="done">I Love You Babe</div>
     `;
     return {
       target,

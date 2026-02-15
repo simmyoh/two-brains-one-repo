@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Multiple Countdowns</title>
+  <title>Countdowns</title>
   <style>
     :root {
       --bg:#0b1020;
@@ -30,7 +30,7 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       padding:18px;
     }
-    .wrap { width:min(1000px,100%); }
+    .wrap { width:min(1240px,100%); }
     .top-title {
         margin:0 0 14px;
         font-size:clamp(28px,5vw,44px);
@@ -40,7 +40,10 @@
     .grid {
       display:grid;
       gap:18px;
-      grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));
+    }
+    @media (min-width: 1180px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
     }
     .card {
       border:1px solid var(--border);
@@ -59,7 +62,7 @@
     }
     .row {
       display:grid;
-      grid-template-columns:repeat(4,1fr);
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:10px;
       margin-top:14px;
     }
@@ -74,15 +77,22 @@
     .pill .t { font-size:18px; color:var(--muted); }
     .done { color:var(--good); font-weight:800; display:none; margin-top:10px; text-align:center; }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       .card { padding: 14px; }
       .top-title { margin-bottom: 10px;font-size: clamp(24px, 8vw, 32px);}
       h2 { margin-bottom: 6px; font-size: clamp(20px, 6vw, 26px); }
-      .row { gap: 6px; margin-top: 8px; }
+      .row { gap: 6px; margin-top: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .pill { padding: 8px; }
       .pill .n { font-size: 20px; }
       .pill .t { font-size: 11px; }
     }
+
+    /* Desktop polish – overrides earlier pill sizing */
+    .pill .n { font-size: clamp(22px, 2.2vw, 30px); line-height: 1.05;
+    }
+    .pill .t { font-size: clamp(11px, 1.2vw, 16px);white-space: nowrap;
+    }
+
   </style>
 </head>
 
@@ -97,17 +107,17 @@
     {
       title: "Touchdown",
       label: "Flight Arrives",
-      iso: "2026-02-16T02:36:00Z"
+      iso: "__TARGET__"
     },
     {
       title: "We Kiss Again",
       label: "Next Meetup",
-      iso: "2026-02-16T05:05:00Z"
+      iso: "__TARGET_2__"
     },
     {
       title: "We Fall Asleep Together",
       label: "Bed Time",
-      iso: "2026-02-17T06:00:00Z"
+      iso: "__TARGET_3__"
     }
   ];
 
