@@ -15,9 +15,16 @@ output_path = DOCS / "countdowns.html"
 
 # Add as many targets as necessary
 template = template_path.read_text(encoding="utf-8")
-html = template.replace("__TARGET__", TARGET_ISO_UTC)
-html = template.replace("__TARGET_2__", TARGET_2_ISO_UTC)
-html = template.replace("__TARGET_3__", TARGET_3_ISO_UTC)
+
+replacements = {
+    "__TARGET__": TARGET_ISO_UTC,
+    "__TARGET_2__": TARGET_2_ISO_UTC,
+    "__TARGET_3__": TARGET_3_ISO_UTC,
+}
+
+html = template
+for key, value in replacements.items():
+    html = html.replace(key, value)
 
 output_path.write_text(html, encoding="utf-8")
 
